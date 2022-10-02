@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import props from './profile-data.js';
 
 const ProfileStyled = styled.div`
   grid-area: profile;
@@ -79,32 +80,33 @@ const ProfileStyled = styled.div`
 `;
 
 function Profile() {
+  const {avatar_url, name, login, location, bio, followers, following, blog, twitter_username} = props;
   return (
     <ProfileStyled>
-      <img className='avatar' src="" alt="" width="278" height="278" />
-      <h2 className="name">Joel Dominguez Merino</h2>
-      <p className="username">iJCode1</p>
+      <img className='avatar' src={avatar_url} alt={`Foto de perfil de ${name}`} width="278" height="278" />
+      <h2 className="name">{name}</h2>
+      <p className="username">{login}</p>
       <div className="buttons">
         <button>Follow</button>
         <button>Sponsor</button>
       </div>
       <p className="bio">
-        Hola Mundo
+        {bio}
       </p>
       <p className="followers">
-        • <span className="number">29</span> Followers • <span className="number">20</span> Following
+        • <span className="number">{followers}</span> Followers • <span className="number">{following}</span> Following
       </p>
       <p className="stars">
         • <span className="number">40</span>
       </p>
       <p className="location info">
-        • Toluca
+        • {location}
       </p>
-      <a href="#" className="website info" target="_blank" rel="noreferrer">
-        • https://ijcode1.com
+      <a href={blog} className="website info" target="_blank" rel="noreferrer">
+        • {blog}
       </a>
-      <a href="#" className="twitter info" target="_blank" rel="noreferrer">
-        • @iJCode1
+      <a href={`https://twitter.com/${twitter_username}`} className="twitter info" target="_blank" rel="noreferrer">
+        • @{twitter_username}
       </a>
     </ProfileStyled>
   )
