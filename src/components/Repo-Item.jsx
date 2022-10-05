@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import Language from './Language';
+import Icon from './icons';
 
 const RepoItemStyled = styled.div`
   padding-block-end: 1rem;
@@ -55,10 +56,25 @@ const RepoItemStyled = styled.div`
   
   .repo-info{
     margin-block-start: 1rem;
+    display: flex;
+    font: var(--caption-regular);
+    gap: 1rem;
+    & span{
+      display: flex;
+      gap: .5rem;
+      align-items: center;
+      color: var(--grey-2)
+    }
   }
 `;
 
 function RepoItem(props) {
+  const updatedAt = new Date(props.updated_at);
+  const today = new Date();
+  const diffMilliSeconds = updatedAt - today;
+  const diffDays = Math.ceil(diffMilliSeconds / (1000 * 60 * 60 * 24));
+  const timeAgo = new Intl.RelativeTimeFormat('es').format(diffDays, 'days')
+
   return (
     <RepoItemStyled>
       <h3 className='repo-title'>
@@ -91,6 +107,17 @@ function RepoItem(props) {
         {
           props.language ? <Language language={props.language} /> : null
         }
+        <span className="repo-star">
+          <Icon icon="star" />
+          {props.stargazers_count}
+        </span>
+        <span className='repo-fork'>
+          <Icon icon="branch" />
+          {props.forks_count}
+        </span>
+        <span>
+          {timeAgo}
+        </span>
       </div>
     </RepoItemStyled>
   );
