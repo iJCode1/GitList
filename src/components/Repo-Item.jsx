@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Language from './Language';
 
 const RepoItemStyled = styled.div`
   padding-block-end: 1rem;
@@ -51,6 +52,10 @@ const RepoItemStyled = styled.div`
     border-radius: 2.375rem;
     font: var(--caption-medium);
   }
+  
+  .repo-info{
+    margin-block-start: 1rem;
+  }
 `;
 
 function RepoItem(props) {
@@ -61,27 +66,32 @@ function RepoItem(props) {
           {props.name}
         </a>
         {
-          !props.private 
-          ? <span className='repo-type'>Public</span> 
-          : null
+          !props.private
+            ? <span className='repo-type'>Public</span>
+            : null
         }
       </h3>
       {
-        props.description 
-        ? <p className='repo-description'>
+        props.description
+          ? <p className='repo-description'>
             {props.description}
           </p>
-        : null
+          : null
       }
       {
-        props.topics.length 
-        ? <div className='repo-topics'>
-          {
-            props.topics.map( topic => <span className='repo-topic'>{topic}</span> )
-          }
-        </div>
-        : null
+        props.topics.length
+          ? <div className='repo-topics'>
+            {
+              props.topics.map(topic => <span className='repo-topic'>{topic}</span>)
+            }
+          </div>
+          : null
       }
+      <div className="repo-info">
+        {
+          props.language ? <Language language={props.language} /> : null
+        }
+      </div>
     </RepoItemStyled>
   );
 }
