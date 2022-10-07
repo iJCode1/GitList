@@ -3,26 +3,41 @@ import Layout from "./components/Layout";
 import Profile from "./components/Profile";
 import RepoList from "./components/Repo-List";
 import Search from "./components/Search";
-import repoData from "./components/repo-data";
-
-// const repoList = [
-//   {
-//     id: 1234,
-//     name: "Mi primer proyecto con React.js"
-//   },
-//   {
-//     id: 1235,
-//     name: "Mi segundo proyecto con React.js"
-//   },
-// ];
+import { useState, useEffect } from 'react';
+import { getUser, getRepos } from './services/user';
 
 function App() {
 
+  const [user, setUser] = useState({});
+  const [repos, setRepos] = useState([]);
+
+  useEffect(() => {
+    getUser('ijcode1').then(({ data, isError }) => {
+      if (isError) {
+        console.error("No se ha encontrado al usuario indicado");
+        return;
+      }
+
+      setUser(data);
+    })
+  }, []);
+
+  useEffect(() => {
+    getRepos('ijcode1').then(({ data, isError }) => {
+      if (isError) {
+        console.error("No se han encontrado los repos del usuario indicado");
+        return;
+      }
+
+      setRepos(data);
+    })
+  }, [])
+
   return (
     <Layout>
-      <Profile />
+      <Profile {...user} />
       <Filters />
-      <RepoList repoList={repoData} />
+      <RepoList repoList={repos} />
       <Search />
     </Layout>
   )

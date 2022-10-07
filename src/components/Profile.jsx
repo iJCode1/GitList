@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import props from './profile-data.js';
 import Button from './Button';
 import Icon from './icons';
 import { useState, useEffect } from 'react';
@@ -86,29 +85,15 @@ const ProfileStyled = styled.div`
   }
 `;
 
-function Profile() {
+function Profile(props) {
   const { avatar_url, name, login, location, bio, followers, following, blog, twitter_username } = props;
 
   const [nombre, setNombre] = useState(name);
-  const [nombre2, setNombre2] = useState(name);
-
-  useEffect(() => {
-    setTimeout(() => {
-      setNombre(`Joel ${new Date().toTimeString()}`);
-    }, 1000)
-  }, [nombre])
-
-  useEffect(()=>{
-    setTimeout(()=>{
-      setNombre2(`Joel2 ${new Date().toTimeString()}`);
-    },1000)
-  },[]);
 
   return (
     <ProfileStyled>
       <img className='avatar' src={avatar_url} alt={`Foto de perfil de ${name}`} width="278" height="278" />
       <h2 className="name">{nombre}</h2>
-      <h2 className="name">{nombre2}</h2>
       <p className="username">{login}</p>
       <div className="buttons">
         <Button
