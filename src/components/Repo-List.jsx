@@ -6,12 +6,22 @@ const RepoListStyled = styled.div`
   padding-block-start: 1.5rem;
 `;
 
-function RepoList({ repoList }) {
+function RepoList({ repoList, search }) {
+
+  let list = repoList;
+
+  if (search !== '') {
+    list = list.filter((repo) => {
+      return repo.name.toLowerCase().search(search.toLowerCase()) >= 0;
+    });
+  }
+
+
 
   return (
     <RepoListStyled>
-      {repoList.map((item) => {
-        return <RepoItem {...item} key={item.id}/>
+      {list.map((item) => {
+        return <RepoItem {...item} key={item.id} />
       })}
     </RepoListStyled>
   )

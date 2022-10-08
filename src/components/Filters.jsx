@@ -23,7 +23,12 @@ const FiltersStyled = styled.div`
   }
 `;
 
-function Filters({ repoListCount = 70 }) {
+function Filters({ setSearch, repoListCount = 70 }) {
+
+  function handleChange(e){
+    setSearch(e.target.value);
+  }
+
   return (
     <FiltersStyled>
       <h2 className="filter-title">Repositorios {repoListCount}</h2>
@@ -31,6 +36,7 @@ function Filters({ repoListCount = 70 }) {
         <InputText
           placeholder='Cards de precios'
           type="search"
+          onChange={handleChange}
         />
 
         <div className="filter-list">
