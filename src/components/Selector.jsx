@@ -13,9 +13,14 @@ const SelectorStyled = styled.select`
   }
 `;
 
-function Selector({ children }) {
+function Selector({ children, setLanguage }) {
+
+  function handleLanguage(e) {
+    setLanguage(e.target.value);
+  }
+
   return (
-    <SelectorStyled>
+    <SelectorStyled onChange={handleLanguage}>
       {children}
     </SelectorStyled>
   );

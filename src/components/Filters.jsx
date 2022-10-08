@@ -23,9 +23,9 @@ const FiltersStyled = styled.div`
   }
 `;
 
-function Filters({ setSearch, repoListCount = 70 }) {
+function Filters({ setSearch, repoListCount = 70, setLanguage }) {
 
-  function handleChange(e){
+  function handleChange(e) {
     setSearch(e.target.value);
   }
 
@@ -49,13 +49,16 @@ function Filters({ setSearch, repoListCount = 70 }) {
             <option value="mirrors">Mirrors</option>
           </Selector>
 
-          <Selector>
+          <Selector setLanguage={setLanguage}>
             <option selected disabled>Lenguaje</option>
             <option value="todos">Todos</option>
             <option value="css">CSS</option>
             <option value="javascript">JavaScript</option>
             <option value="java">Java</option>
             <option value="html">HTML</option>
+            <option value="php">PHP</option>
+            <option value="python">Python</option>
+            <option value="dart">Dart</option>
           </Selector>
 
           <Selector>

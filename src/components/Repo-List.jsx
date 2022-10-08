@@ -6,7 +6,7 @@ const RepoListStyled = styled.div`
   padding-block-start: 1.5rem;
 `;
 
-function RepoList({ repoList, search }) {
+function RepoList({ repoList, search, language }) {
 
   let list = repoList;
 
@@ -16,6 +16,13 @@ function RepoList({ repoList, search }) {
     });
   }
 
+  if (language !== '' && language !== 'todos') {
+    list = list.filter((repo) => {
+      if (repo.language) {
+        return repo.language.toLowerCase() === language
+      }
+    });
+  }
 
 
   return (
