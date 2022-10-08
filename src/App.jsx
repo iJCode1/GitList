@@ -5,14 +5,21 @@ import RepoList from "./components/Repo-List";
 import Search from "./components/Search";
 import { useState, useEffect } from 'react';
 import { getUser, getRepos } from './services/user';
+import { useParams } from "react-router-dom";
 
 function App() {
 
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
+  const params = useParams();
+  let userParam = params.user;
+
+  if(!userParam){
+    userParam = "ijcode1";
+  }
 
   useEffect(() => {
-    getUser('ijcode1').then(({ data, isError }) => {
+    getUser(userParam).then(({ data, isError }) => {
       if (isError) {
         console.error("No se ha encontrado al usuario indicado");
         return;
@@ -23,7 +30,7 @@ function App() {
   }, []);
 
   useEffect(() => {
-    getRepos('ijcode1').then(({ data, isError }) => {
+    getRepos(userParam).then(({ data, isError }) => {
       if (isError) {
         console.error("No se han encontrado los repos del usuario indicado");
         return;
