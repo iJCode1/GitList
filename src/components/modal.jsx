@@ -1,9 +1,39 @@
-import { useRef } from "react";
+import React,{ useRef } from "react";
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Overlay from './Overlay';
 import InputText from "./Input-text";
 import { ButtonContrast } from "./Button";
+import ReactDOM from 'react-dom';
+
+const modalRoot = document.getElementById('portal');
+
+class ModalPortal extends React.Component {
+  constructor(props) {
+    super(props);
+    this.el = document.createElement('div');
+  }
+
+  componentDidMount() {
+    modalRoot.appendChild(this.el);
+  }
+
+  componentWillUnmount() {
+    modalRoot.removeChild(this.el);
+  }
+
+  render() {
+    return ReactDOM.createPortal(this.props.children, this.el);
+  }
+}
+
+export default function Modal() {
+  return (
+    <ModalPortal>
+      <ModalContent />
+    </ModalPortal>
+  )
+}
 
 const ModalContentStyled = styled.form`
   background: var(--bg);
@@ -47,5 +77,3 @@ function ModalContent() {
     </Overlay>
   );
 }
-
-export default ModalContent;

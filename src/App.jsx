@@ -6,6 +6,7 @@ import Search from "./components/Search";
 import { useState, useEffect } from 'react';
 import { getUser, getRepos } from './services/user';
 import { useParams } from "react-router-dom";
+import Modal from "./components/modal";
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
   const params = useParams();
   let userParam = params.user;
 
-  if(!userParam){
+  if (!userParam) {
     userParam = "ijcode1";
   }
 
@@ -40,6 +41,7 @@ function App() {
 
   return (
     <Layout>
+      <Modal />
       <Profile {...user} />
       <Filters />
       <RepoList repoList={repos} />
