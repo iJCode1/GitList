@@ -21,20 +21,20 @@ const ButtonStyled = styled.button`
     }
 `;
 
-function Button({text, icon, link, className}){
+function Button({ text, icon, link, className }) {
   const component = link ? 'a' : 'button';
   let iconComponent = null;
 
-  if(icon){
-    if(isValidElement(icon)){
+  if (icon) {
+    if (isValidElement(icon)) {
       iconComponent = icon;
     }
   }
-  return(
-    <ButtonStyled as={component} href={link} target="_blank" rel="noreferrer" className={className}> 
+  return (
+    <ButtonStyled as={component} href={link} target="_blank" rel="noreferrer" className={className}>
       {iconComponent}
       {text}
-    </ButtonStyled>  
+    </ButtonStyled>
   )
 }
 
@@ -44,6 +44,19 @@ export const ButtonContrast = styled(Button)`
   &:hover{
     color: var(--white);
     background: var(--buttonc);
+  }
+`;
+
+export const ButtonRounded = styled(Button)`
+  min-inline-size: initial;
+  border-radius: 50%;
+  padding: .75rem;
+  border: 2px solid var(--grey-1);
+  &:hover{
+    background: var(--buttonc);
+  }
+  &:active{
+    transform: scale(.8);
   }
 `;
 

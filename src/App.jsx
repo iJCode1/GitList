@@ -6,12 +6,13 @@ import Search from "./components/Search";
 import { useState, useEffect } from 'react';
 import { getUser, getRepos } from './services/user';
 import { useParams } from "react-router-dom";
-import Modal from "./components/modal";
+import Modal from "./components/Modal";
 
 function App() {
 
   const [user, setUser] = useState({});
   const [repos, setRepos] = useState([]);
+  const [modal, setModal] = useState(false);
   const params = useParams();
   let userParam = params.user;
 
@@ -41,11 +42,11 @@ function App() {
 
   return (
     <Layout>
-      <Modal />
+      <Modal isActive={modal} setModal={setModal} />
       <Profile {...user} />
       <Filters />
       <RepoList repoList={repos} />
-      <Search />
+      <Search setModal={setModal} />
     </Layout>
   )
 }
