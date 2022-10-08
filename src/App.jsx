@@ -26,10 +26,8 @@ function App() {
       }
 
       setUser(data);
-    })
-  }, []);
+    });
 
-  useEffect(() => {
     getRepos(userParam).then(({ data, isError }) => {
       if (isError) {
         console.error("No se han encontrado los repos del usuario indicado");
@@ -37,8 +35,8 @@ function App() {
       }
 
       setRepos(data);
-    })
-  }, [])
+    });
+  }, [userParam])
 
   return (
     <Layout>
