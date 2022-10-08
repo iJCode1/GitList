@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import NoRepos from './NoRepos';
 import RepoItem from './Repo-Item';
 
 const RepoListStyled = styled.div`
@@ -24,14 +25,18 @@ function RepoList({ repoList, search, language }) {
     });
   }
 
+  if (!list.length > 0){
+    return <NoRepos/>
+  }
+    // console.log(list.length);
 
-  return (
-    <RepoListStyled>
-      {list.map((item) => {
-        return <RepoItem {...item} key={item.id} />
-      })}
-    </RepoListStyled>
-  )
+    return (
+      <RepoListStyled>
+        {list.map((item) => {
+          return <RepoItem {...item} key={item.id} />
+        })}
+      </RepoListStyled>
+    )
 }
 
 export default RepoList
