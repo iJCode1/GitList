@@ -31,7 +31,7 @@ function Filters({ setSearch, repoListCount = 70, setLanguage }) {
 
   return (
     <FiltersStyled>
-      <h2 className="filter-title">Repositorios {repoListCount}</h2>
+      <h2 className="filter-title">Repositorios ({repoListCount})</h2>
       <div className="action-list">
         <InputText
           placeholder='Cards de precios'
