@@ -66,6 +66,12 @@ const RepoItemStyled = styled.div`
       color: var(--grey-2)
     }
   }
+
+  @media screen and (prefers-color-scheme: light){
+    .repo-topic{
+      background: #d5e8ff;
+    }
+  }
 `;
 
 function RepoItem(props) {
@@ -108,11 +114,11 @@ function RepoItem(props) {
           props.language ? <Language language={props.language} /> : null
         }
         <span className="repo-star">
-          <Icon icon="star" />
+          <Icon icon="star" color={`var(--grey)`}/>
           {props.stargazers_count}
         </span>
         <span className='repo-fork'>
-          <Icon icon="branch" />
+          <Icon icon="branch" color={`var(--grey)`}/>
           {props.forks_count}
         </span>
         <span>

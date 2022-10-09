@@ -11,6 +11,14 @@ const SelectorStyled = styled.select`
   &:hover{
     background: #4F545A;
   }
+
+  @media screen and (prefers-color-scheme: light){
+    border: 1px solid var(--grey);
+    &:hover{
+      background: #c5ced7;
+      color: var(--buttonc);
+    }
+  }
 `;
 
 function Selector({ children, setLanguage }) {

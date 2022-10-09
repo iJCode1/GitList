@@ -16,7 +16,7 @@ function Search({ setModal }) {
 
   return (
     <SearchStyled onClick={handleClick}>
-      <ButtonRounded icon={<Icon icon="search" size="24" />} />
+      <ButtonRounded icon={<Icon icon="search" size="24" color="var(--white)"/>} />
     </SearchStyled>
   );
 }

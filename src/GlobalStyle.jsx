@@ -24,11 +24,21 @@ const GlobalStyle = createGlobalStyle`
     --caption-regular: 400 0.75rem/1.125rem Inter; 
     --caption-medium: 500 0.75rem/1.125rem Inter; 
   }
+
   body{
     background-color: var(--bg);
     color: var(--grey);
     font: var(--body1-regular);
     margin: 0;
+  }
+
+  @media screen and (prefers-color-scheme: light){
+    :root{
+      --bg: #fffffe;
+      --buttonc: #fffffe;
+      --white: #22262c;
+      --grey-2: var(--grey);
+    }
   }
 `;
 

@@ -93,7 +93,7 @@ function Profile(props) {
   return (
     <ProfileStyled>
       <img className='avatar' src={avatar_url} alt={`Foto de perfil de ${name}`} width="278" height="278" />
-      <h2 className="name">{nombre}</h2>
+      <h2 className="name">{name}</h2>
       <p className="username">{login}</p>
       <div className="buttons">
         <Button
