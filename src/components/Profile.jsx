@@ -85,6 +85,75 @@ const ProfileStyled = styled.div`
   .custom{
     border: 1px solid red;
   }
+
+  @media screen and (max-width: 767px){
+    display: grid;
+    grid-template-areas: 
+      "profile"
+      "description"
+      "followers"
+      "location"
+      "blog"
+      "twitter"
+      "actions";
+
+    .profile-wrapper{
+      grid-area: profile;
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+
+      & .avatar{
+        max-inline-size: 17.375rem;
+        inline-size: 30%;
+        block-size: auto;
+        
+        border-radius: 50%;
+        align-self: center;
+      }
+
+      & .profile-text{
+        flex: 2;
+        min-inline-size: 11.25rem;
+      }
+    }
+
+    .buttons{
+      margin-block-end: 0;
+    }
+
+    .description-wrapper{
+      grid-area: description;
+    }
+
+    .followers{
+      grid-area: followers;
+      margin: 0;
+      margin-block-end: 1.5rem;
+    }
+
+    .buttons{
+      grid-area: actions;
+    }
+
+    .location{
+      grid-area: location;
+      margin: 0;
+      margin-block-end: 1rem;
+    }
+
+    .website{
+      grid-area: blog;
+      margin-block-end: 1rem;
+    }
+
+    .twitter{
+      grid-area: twitter;
+      margin: 0;
+      margin-block-end: 1rem;
+    }
+  }
 `;
 
 function Profile(props) {
@@ -94,9 +163,14 @@ function Profile(props) {
 
   return (
     <ProfileStyled>
-      <img className='avatar' src={avatar_url} alt={`Foto de perfil de ${name}`} width="278" height="278" />
-      <h2 className="name">{name}</h2>
-      <p className="username">{login}</p>
+      <div className="profile-wrapper">
+        <img className='avatar' src={avatar_url} alt={`Foto de perfil de ${name}`} width="278" height="278" />
+        <div className="profile-text">
+          <h2 className="name">{name}</h2>
+          <p className="username">{login}</p>
+        </div>
+      </div>
+
       <div className="buttons">
         <Button
           text="Follow"
@@ -113,13 +187,16 @@ function Profile(props) {
         />
       </div>
 
-      {
-        bio
-          ? <p className="bio">
-            {bio}
-          </p>
-          : null
-      }
+      <div className="description-wrapper">
+        {
+          bio
+            ? <p className="bio">
+              {bio}
+            </p>
+            : null
+        }
+      </div>
+
 
       <p className="followers">
         <Icon icon="user" color="var(--grey)" size="20" />

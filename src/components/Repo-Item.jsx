@@ -29,6 +29,7 @@ const RepoItemStyled = styled.div`
     padding: .125rem .5rem;
     border: 1px solid var(--grey);
     border-radius: .5rem;
+    height: 100%;
   }
 
   .repo-description{

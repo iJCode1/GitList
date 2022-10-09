@@ -9,17 +9,39 @@ const FiltersStyled = styled.div`
     font: var(--headline2-semi-bold);
     color: var(--white);
     margin: 0;
+    display: none;
   }
   
   .action-list{
     margin-block: 1.5rem;
     display: flex;
+    flex-direction: column;
     gap: 1rem;
+    margin-block-start: 2.5rem;
+    & input{
+      flex: 1;
+    }
   }
 
   .filter-list{
     display: flex;
+    flex-wrap: wrap;
     gap: .5rem
+  }
+
+  @media screen and (min-width: 768px){
+    .filter-title{
+      display: block;
+    }
+
+    .action-list{
+      flex-direction: row;
+      margin-block-start: 1.5rem;
+
+      & input{
+        align-self: center;
+      }
+    }
   }
 `;
 

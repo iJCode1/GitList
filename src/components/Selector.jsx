@@ -8,6 +8,8 @@ const SelectorStyled = styled.select`
   padding-block-end: .5rem;
   border: none;
   border-radius: .5rem;
+  /* flex: 1; */
+
   &:hover{
     background: #4F545A;
   }

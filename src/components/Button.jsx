@@ -24,6 +24,10 @@ const ButtonStyled = styled.button`
         color: var(--buttonc);
       }
     }
+
+  @media screen and (max-width: 767px){
+    flex: 1;
+  }
 `;
 
 function Button({ text, icon, link, className }) {
@@ -66,6 +70,10 @@ export const ButtonRounded = styled(Button)`
 
   @media screen and (prefers-color-scheme: light){
     border: 1px solid var(--grey);
+  }
+
+  @media screen and (max-width: 767px){
+    flex: initial;
   }
 `;
 
