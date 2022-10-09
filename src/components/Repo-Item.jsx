@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Language from './Language';
-import Icon from './icons';
+import Icon from './icons/Index';
 
 const RepoItemStyled = styled.div`
   padding-block-end: 1rem;

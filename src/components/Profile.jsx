@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Button from './Button';
-import Icon from './icons';
+import Icon from './icons/Index';
 import { useState, useEffect } from 'react';
 
 const ProfileStyled = styled.div`

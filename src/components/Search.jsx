@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { ButtonRounded } from './Button';
-import Icon from './icons/';
+import Icon from './icons/Index';
 
 const SearchStyled = styled.div`
   position: fixed;

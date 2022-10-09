@@ -62,8 +62,8 @@ function Filters({ setSearch, repoListCount = 70, setLanguage }) {
         />
 
         <div className="filter-list">
-          <Selector>
-            <option selected disabled>Tipo</option>
+          <Selector defaultValue="">
+            <option value="" disabled>Tipo</option>
             <option value="todos">Todos</option>
             <option value="sources">Sources</option>
             <option value="forks">Forks</option>
@@ -71,8 +71,8 @@ function Filters({ setSearch, repoListCount = 70, setLanguage }) {
             <option value="mirrors">Mirrors</option>
           </Selector>
 
-          <Selector setLanguage={setLanguage}>
-            <option selected disabled>Lenguaje</option>
+          <Selector setLanguage={setLanguage} defaultValue="">
+            <option value="" disabled>Lenguaje</option>
             <option value="todos">Todos</option>
             <option value="css">CSS</option>
             <option value="javascript">JavaScript</option>
@@ -83,8 +83,8 @@ function Filters({ setSearch, repoListCount = 70, setLanguage }) {
             <option value="dart">Dart</option>
           </Selector>
 
-          <Selector>
-            <option selected disabled>Ordenar</option>
+          <Selector defaultValue="">
+            <option value="" disabled>Ordenar</option>
             <option value="actualizados">Actualizados</option>
             <option value="nombre">Nombre</option>
             <option value="estrellas">Estrellas</option>

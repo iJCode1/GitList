@@ -6,7 +6,7 @@ import Search from "./components/Search";
 import { useState, useEffect } from 'react';
 import { getUser, getRepos } from './services/user';
 import { useParams } from "react-router-dom";
-import Modal from "./components/Modal";
+import Modal from "./Modal";
 
 function App() {
 

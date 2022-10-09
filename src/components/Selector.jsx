@@ -26,7 +26,11 @@ const SelectorStyled = styled.select`
 function Selector({ children, setLanguage }) {
 
   function handleLanguage(e) {
-    setLanguage(e.target.value);
+
+    if(setLanguage){
+      setLanguage(e.target.value);
+    }
+
   }
 
   return (
