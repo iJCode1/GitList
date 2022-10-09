@@ -7,6 +7,7 @@ import { useState, useEffect } from 'react';
 import { getUser, getRepos } from './services/user';
 import { useParams } from "react-router-dom";
 import Modal from "./Modal";
+import Loading from "./components/Loading";
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
 
   return (
     <Layout>
+      <Loading isData={repos}/>
       <Modal isActive={modal} setModal={setModal} />
       <Profile {...user} />
       <Filters setSearch={setSearch} repoListCount={repos.length} setLanguage={setLanguage} />
