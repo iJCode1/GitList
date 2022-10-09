@@ -47,9 +47,9 @@ const ProfileStyled = styled.div`
     margin-block: 1rem;
   }
 
-  .stars{
+  /* .stars{
     margin-block-end: 1.5rem;  
-  }
+  } */
 
   .location{
     margin: 0;
@@ -69,6 +69,8 @@ const ProfileStyled = styled.div`
     color: var(--grey-2);
     display: flex;
     text-decoration: none;
+    gap: .5rem;
+    align-items: center;
   }
 
   a.info:hover{
@@ -86,7 +88,7 @@ const ProfileStyled = styled.div`
 `;
 
 function Profile(props) {
-  const { avatar_url, name, login, location, bio, followers, following, blog, twitter_username } = props;
+  const { html_url, avatar_url, name, login, location, bio, followers, following, blog, twitter_username } = props;
 
   const [nombre, setNombre] = useState(name);
 
@@ -98,7 +100,7 @@ function Profile(props) {
       <div className="buttons">
         <Button
           text="Follow"
-          link="#"
+          link={html_url}
         // className="custom"
         />
         <Button
@@ -110,24 +112,51 @@ function Profile(props) {
           />}
         />
       </div>
-      <p className="bio">
-        {bio}
-      </p>
+
+      {
+        bio
+          ? <p className="bio">
+            {bio}
+          </p>
+          : null
+      }
+
       <p className="followers">
-        • <span className="number">{followers}</span> Followers • <span className="number">{following}</span> Following
+        <Icon icon="user" color="var(--grey)" size="20" />
+        <span className="number">{followers}</span> Followers • <span className="number">{following}</span> Following
       </p>
-      <p className="stars">
+
+      {/* <p className="stars">
         • <span className="number">40</span>
-      </p>
-      <p className="location info">
-        • {location}
-      </p>
-      <a href={blog} className="website info" target="_blank" rel="noreferrer">
-        • {blog}
-      </a>
-      <a href={`https://twitter.com/${twitter_username}`} className="twitter info" target="_blank" rel="noreferrer">
-        • @{twitter_username}
-      </a>
+      </p> */}
+
+      {
+        location
+          ? <p className="location info">
+            <Icon icon="location" color="var(--grey)" size="20"></Icon>
+            {location}
+          </p>
+          : null
+      }
+
+      {
+        blog
+          ? <a href={blog} className="website info" target="_blank" rel="noreferrer">
+            <Icon icon="link" color="var(--grey)" size="20"></Icon>
+            {blog}
+          </a>
+          : null
+      }
+
+      {
+        twitter_username
+          ? <a href={`https://twitter.com/${twitter_username}`} className="twitter info" target="_blank" rel="noreferrer">
+            <Icon icon="twitter" color="var(--grey)" size="20" />
+            @{twitter_username}
+          </a>
+          : null
+      }
+
     </ProfileStyled>
   )
 }
